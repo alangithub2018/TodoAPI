@@ -9,7 +9,8 @@ builder.Services.AddDbContext<TodoDB>(opt => opt.UseInMemoryDatabase("TodoList")
 var app = builder.Build();
 
 // configure pipeline - UseMethod..
-app.MapGet("/todoitems", async (TodoDB db) => await db.Todos.ToListAsync());
+app.MapGet("/todoitems", async (TodoDB db) => 
+await db.Todos.ToListAsync());
 
 app.MapGet("/todoitems/{id}", async (int id, TodoDB db) => await db.Todos.FindAsync(id));
 
